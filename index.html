@@ -34,15 +34,30 @@
         .subtitle {
             font-size: 1.5rem;
             font-weight: normal;
-            margin-top: 0;
+            margin-top: -20px;
             margin-bottom: 0;
             margin-left: 1rem;
             color: black;
+            padding-top: 10px;            
         }
         
         ::selection {
             background-color: #FFB366;
             color: white;
+        }
+        
+        .email-link {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            font-size: 1rem;
+            color: black;
+            text-decoration: none;
+            font-family: "Hoefler Text", "Hoefler Text Std", serif;
+        }
+        
+        .email-link:hover {
+            color: #FFB366;
         }
         
         @media (max-width: 768px) {
@@ -60,5 +75,6 @@
         <h1 class="name">Wilbur Dekum</h1>
         <p class="subtitle">Data Strategy & Operations</p>
     </div>
+    <a href="mailto:hello@wilburdekum.com" class="email-link">hello@wilburdekum.com</a>
 </body>
 </html>
