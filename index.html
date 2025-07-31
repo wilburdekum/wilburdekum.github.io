@@ -23,23 +23,26 @@
         }
         
         .name {
-            font-size: 4rem;
+            font-size: 6rem;
             font-weight: bold;
             margin: 0;
             padding: 0;
             line-height: 1.2;
-            background: linear-gradient(90deg, black 0%, black 85%, #FFB366 85%, #FFB366 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: black;
         }
         
         .subtitle {
             font-size: 1.5rem;
             font-weight: normal;
-            margin-top: 1rem;
+            margin-top: 0;
             margin-bottom: 0;
+            margin-left: 1rem;
             color: black;
+        }
+        
+        ::selection {
+            background-color: #FF0099;
+            color: white;
         }
         
         @media (max-width: 768px) {
