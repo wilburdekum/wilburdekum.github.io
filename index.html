@@ -1,1 +1,61 @@
-Wilbur Dekum
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wilbur Dekum</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            font-family: "Hoefler Text", "Hoefler Text Std", "Hoefler Text Std Black", serif;
+            color: black;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding-left: 5%;
+        }
+        
+        .container {
+            text-align: left;
+        }
+        
+        .name {
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+            background: linear-gradient(90deg, black 0%, black 85%, #FFB366 85%, #FFB366 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-top: 1rem;
+            margin-bottom: 0;
+            color: black;
+        }
+        
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="name">Wilbur Dekum</h1>
+        <p class="subtitle">Data Strategy & Operations</p>
+    </div>
+</body>
+</html>
