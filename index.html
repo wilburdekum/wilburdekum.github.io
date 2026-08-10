@@ -110,11 +110,13 @@
         /* ---------- Hero (matches the original landing page, now in flow) ---------- */
         .hero {
             position: relative;
-            height: 100vh;
+            min-height: 68vh;
+            max-width: 1080px;
+            margin: 0 auto;
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            padding-left: 5%;
+            padding: 0 5%;
         }
 
         .container {
@@ -680,12 +682,14 @@
         </main>
 
     <script>
-        // Reveal the permanent masthead once the hero wordmark has scrolled
-        // most of the way off the top, so the two hand off cleanly.
+        // Reveal the permanent masthead right as the big hero wordmark reaches
+        // the top, so it reads as the logo shrinking into the header.
         (function () {
             var masthead = document.getElementById('masthead');
+            var hero = document.getElementById('top');
             function update() {
-                if (window.scrollY > window.innerHeight * 0.6) {
+                var trigger = hero.offsetHeight * 0.55;
+                if (window.scrollY > trigger) {
                     masthead.classList.add('is-visible');
                 } else {
                     masthead.classList.remove('is-visible');
