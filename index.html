@@ -31,6 +31,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 5.5rem;
         }
 
         body {
@@ -48,28 +49,76 @@
             color: white;
         }
 
-        /* ---------- Parallax scaffold ---------- */
+        /* ---------- Masthead (settles into a permanent top header) ---------- */
         /*
-         * The hero is pinned to the viewport (position: fixed) so it stays put
-         * while the content sheet, which starts one viewport-height down, scrolls
-         * up and over it. The result is a clean parallax: the header reads exactly
-         * like the original landing page, then the content slides over it.
+         * The hero sits in normal flow, so the wordmark scrolls up with the page.
+         * Once it has scrolled most of the way off, the compact masthead — fixed
+         * across the top — slides down and stays there permanently. The two
+         * wordmarks hand off cleanly right around the scroll threshold.
          */
-
-        /* ---------- Hero (matches the original landing page) ---------- */
-        .hero {
+        .masthead {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 2.5rem;
+            padding: 1rem 5%;
+            background: rgba(255, 255, 255, 0.88);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--hairline);
+            transform: translateY(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .masthead.is-visible {
+            transform: translateY(0);
+        }
+
+        .masthead__nav {
+            display: flex;
+            gap: 2rem;
+            margin-left: auto;
+        }
+
+        .masthead__nav a {
+            font-size: 1rem;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .masthead__nav a:hover {
+            color: var(--accent);
+        }
+
+        .masthead__brand {
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 1px;
+            white-space: nowrap;
+        }
+
+        /* ---------- Hero (matches the original landing page, now in flow) ---------- */
+        .hero {
+            position: relative;
             height: 100vh;
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-start;
             align-items: center;
-            padding-right: 5%;
-            z-index: 0;
+            padding-left: 5%;
         }
 
         .container {
-            text-align: right;
+            text-align: left;
         }
 
         .name {
@@ -89,31 +138,9 @@
             font-weight: normal;
             margin-top: -10px;
             margin-bottom: 0;
-            margin-left: 2rem;
+            margin-left: 0;
             color: var(--ink);
             padding-top: 0;
-        }
-
-        .scroll-cue {
-            position: absolute;
-            bottom: 2rem;
-            left: 5%;
-            font-size: 0.95rem;
-            letter-spacing: 0.05em;
-            color: var(--muted);
-            text-transform: lowercase;
-        }
-
-        .scroll-cue::after {
-            content: "↓";
-            display: inline-block;
-            margin-left: 0.5rem;
-            animation: nudge 2s ease-in-out infinite;
-        }
-
-        @keyframes nudge {
-            0%, 100% { transform: translateY(0); opacity: 0.6; }
-            50% { transform: translateY(4px); opacity: 1; }
         }
 
         /* ---------- Content sheet that scrolls over the hero ---------- */
@@ -121,37 +148,35 @@
             position: relative;
             background: var(--paper);
             z-index: 1;
-            margin-top: 100vh;
-            box-shadow: 0 -40px 60px -20px rgba(0, 0, 0, 0.12);
         }
 
         section {
             max-width: 1080px;
             margin: 0 auto;
-            padding: 7rem 5% 6rem;
+            padding: 4.5rem 5% 4rem;
         }
 
         .eyebrow {
             font-size: 0.85rem;
-            letter-spacing: 0.22em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--accent);
-            margin: 0 0 1.25rem;
+            margin: 0 0 0.85rem;
         }
 
         .section-title {
-            font-size: 2.75rem;
+            font-size: 2.5rem;
             font-weight: 500;
             line-height: 1.15;
             letter-spacing: -1px;
-            margin: 0 0 1.5rem;
-            max-width: 18ch;
+            margin: 0 0 1.1rem;
+            max-width: 30ch;
         }
 
         .lede {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             color: var(--muted);
-            max-width: 60ch;
+            max-width: 64ch;
             margin: 0;
         }
 
@@ -170,8 +195,8 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 3rem 3.5rem;
-            margin-top: 4rem;
+            gap: 2.25rem 3rem;
+            margin-top: 2.75rem;
         }
 
         .card__index {
@@ -182,11 +207,11 @@
         }
 
         .card__title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 500;
-            margin: 0 0 0.75rem;
+            margin: 0 0 0.6rem;
             border-top: 1px solid var(--ink);
-            padding-top: 1rem;
+            padding-top: 0.85rem;
         }
 
         .card__body {
@@ -218,8 +243,8 @@
         .principles {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 3rem 4rem;
-            margin-top: 4rem;
+            gap: 2.5rem 3.5rem;
+            margin-top: 2.75rem;
         }
 
         .principle__num {
@@ -244,7 +269,7 @@
         /* ---------- Engagement / how we work ---------- */
         .steps {
             counter-reset: step;
-            margin-top: 3.5rem;
+            margin-top: 2.5rem;
             border-top: 1px solid var(--hairline);
         }
 
@@ -252,7 +277,7 @@
             display: grid;
             grid-template-columns: 6rem 1fr 2fr;
             gap: 2rem;
-            padding: 2.25rem 0;
+            padding: 1.6rem 0;
             border-bottom: 1px solid var(--hairline);
             align-items: start;
         }
@@ -274,44 +299,17 @@
             margin: 0;
         }
 
-        /* ---------- Stats strip ---------- */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 5rem 5%;
-            text-align: center;
-        }
-
-        .stat__figure {
-            font-size: 3.5rem;
-            font-weight: 500;
-            letter-spacing: -1px;
-            margin: 0;
-        }
-
-        .stat__figure span {
-            color: var(--accent);
-        }
-
-        .stat__label {
-            font-size: 1rem;
-            color: var(--muted);
-            margin: 0.5rem 0 0;
-        }
-
         /* ---------- Contact ---------- */
         .contact {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 3rem;
             align-items: start;
+            margin-top: 2.5rem;
         }
 
         .form-field {
-            margin-bottom: 1.75rem;
+            margin-bottom: 1.4rem;
         }
 
         .form-field label {
@@ -412,13 +410,15 @@
         }
 
         @media (max-width: 768px) {
+            .masthead { padding: 0.85rem 5%; }
+            .masthead__nav { display: none; }
+            .masthead__brand { font-size: 1.3rem; }
             .name { font-size: 2.5rem; }
             .subtitle { font-size: 1.2rem; margin-top: -5px; }
             .section-title { font-size: 2rem; }
             .lede { font-size: 1.15rem; }
             .grid,
-            .principles,
-            .stats { grid-template-columns: 1fr; }
+            .principles { grid-template-columns: 1fr; }
             .step { grid-template-columns: 3rem 1fr; }
             .step__body { grid-column: 1 / -1; }
             footer { flex-direction: column; gap: 1rem; text-align: center; }
@@ -426,13 +426,22 @@
     </style>
 </head>
 <body>
+    <!-- ===== PERMANENT MASTHEAD (slides in after the hero scrolls off) ===== -->
+    <div class="masthead" id="masthead">
+        <a href="#top" class="masthead__brand">Wilbur dekum</a>
+        <nav class="masthead__nav">
+            <a href="#capabilities">Capabilities</a>
+            <a href="#philosophy">Approach</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+
     <!-- ===== HERO (unchanged brand landing) ===== -->
-    <header class="hero">
+    <header class="hero" id="top">
         <div class="container">
             <h1 class="name">Wilbur dekum</h1>
             <p class="subtitle">Data Strategy &amp; Operations</p>
         </div>
-        <span class="scroll-cue">scroll</span>
     </header>
 
     <!-- ===== CONTENT SHEET ===== -->
@@ -449,7 +458,7 @@
                 </p>
             </section>
 
-            <hr class="rule">
+            <hr class="rule rule--full">
 
             <!-- Capabilities -->
             <section id="capabilities">
@@ -622,24 +631,6 @@
 
             <hr class="rule rule--full">
 
-            <!-- Stats -->
-            <div class="stats">
-                <div class="stat">
-                    <p class="stat__figure"><span>120</span>+</p>
-                    <p class="stat__label">Engagements delivered</p>
-                </div>
-                <div class="stat">
-                    <p class="stat__figure"><span>15</span> yrs</p>
-                    <p class="stat__label">In data &amp; operations</p>
-                </div>
-                <div class="stat">
-                    <p class="stat__figure"><span>9</span></p>
-                    <p class="stat__label">Industries served</p>
-                </div>
-            </div>
-
-            <hr class="rule rule--full">
-
             <!-- Contact -->
             <section id="contact">
                 <p class="eyebrow">Get in touch</p>
@@ -687,5 +678,23 @@
                 <a href="mailto:hello@wilburdekum.com">hello@wilburdekum.com</a>
             </footer>
         </main>
+
+    <script>
+        // Reveal the permanent masthead once the hero wordmark has scrolled
+        // most of the way off the top, so the two hand off cleanly.
+        (function () {
+            var masthead = document.getElementById('masthead');
+            function update() {
+                if (window.scrollY > window.innerHeight * 0.6) {
+                    masthead.classList.add('is-visible');
+                } else {
+                    masthead.classList.remove('is-visible');
+                }
+            }
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+        })();
+    </script>
 </body>
 </html>
