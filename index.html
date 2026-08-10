@@ -17,83 +17,675 @@
     </script>
 
     <style>
+        :root {
+            --accent: #eb5e2a;
+            --ink: #111111;
+            --muted: #555555;
+            --hairline: #e2e2e2;
+            --paper: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            background-color: white;
+            background-color: var(--paper);
             font-family: "Times New Roman", Times, serif;
-            color: black;
+            color: var(--ink);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* ---------- Parallax scaffold ---------- */
+        /*
+         * The hero is pinned to the viewport (position: fixed) so it stays put
+         * while the content sheet, which starts one viewport-height down, scrolls
+         * up and over it. The result is a clean parallax: the header reads exactly
+         * like the original landing page, then the content slides over it.
+         */
+
+        /* ---------- Hero (matches the original landing page) ---------- */
+        .hero {
+            position: fixed;
+            inset: 0;
+            height: 100vh;
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            min-height: 100vh;
             padding-right: 5%;
+            z-index: 0;
         }
-        
+
         .container {
             text-align: right;
         }
-        
+
         .name {
             font-size: 6rem;
             font-weight: 500;
             margin: 0;
             padding: 0;
             line-height: 1.2;
-            color: black;
-            text-decoration: underline 1px #eb5e2a;
+            color: var(--ink);
+            text-decoration: underline 1px var(--accent);
             text-underline-offset: -2px;
             letter-spacing: -2.9px;
         }
-        
+
         .subtitle {
             font-size: 1.5rem;
             font-weight: normal;
             margin-top: -10px;
             margin-bottom: 0;
             margin-left: 2rem;
-            color: black;
-            padding-top: 0px;            
+            color: var(--ink);
+            padding-top: 0;
         }
-        
-        ::selection {
-            background-color: #eb5e2a;
-            color: white;
-        }
-        
-        .email-link {
-            position: fixed;
+
+        .scroll-cue {
+            position: absolute;
             bottom: 2rem;
-            right: 5%;
+            left: 5%;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+            text-transform: lowercase;
+        }
+
+        .scroll-cue::after {
+            content: "↓";
+            display: inline-block;
+            margin-left: 0.5rem;
+            animation: nudge 2s ease-in-out infinite;
+        }
+
+        @keyframes nudge {
+            0%, 100% { transform: translateY(0); opacity: 0.6; }
+            50% { transform: translateY(4px); opacity: 1; }
+        }
+
+        /* ---------- Content sheet that scrolls over the hero ---------- */
+        .sheet {
+            position: relative;
+            background: var(--paper);
+            z-index: 1;
+            margin-top: 100vh;
+            box-shadow: 0 -40px 60px -20px rgba(0, 0, 0, 0.12);
+        }
+
+        section {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 7rem 5% 6rem;
+        }
+
+        .eyebrow {
+            font-size: 0.85rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin: 0 0 1.25rem;
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            font-weight: 500;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin: 0 0 1.5rem;
+            max-width: 18ch;
+        }
+
+        .lede {
+            font-size: 1.35rem;
+            color: var(--muted);
+            max-width: 60ch;
+            margin: 0;
+        }
+
+        .rule {
+            border: 0;
+            border-top: 1px solid var(--hairline);
+            margin: 0;
+            max-width: 1080px;
+        }
+
+        .rule--full {
+            max-width: none;
+        }
+
+        /* ---------- Capabilities grid ---------- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem 3.5rem;
+            margin-top: 4rem;
+        }
+
+        .card__index {
+            font-size: 0.9rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin: 0 0 0.75rem;
+        }
+
+        .card__title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0 0 0.75rem;
+            border-top: 1px solid var(--ink);
+            padding-top: 1rem;
+        }
+
+        .card__body {
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* ---------- Philosophy / approach ---------- */
+        .approach {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .approach ::selection {
+            background: var(--accent);
+            color: var(--ink);
+        }
+
+        .approach .section-title,
+        .approach .lede {
+            color: var(--paper);
+        }
+
+        .approach .lede {
+            color: #cfcfcf;
+        }
+
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem 4rem;
+            margin-top: 4rem;
+        }
+
+        .principle__num {
             font-size: 1rem;
-            color: black;
-            text-decoration: none;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin: 0 0 0.5rem;
+        }
+
+        .principle__title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin: 0 0 0.75rem;
+        }
+
+        .principle__body {
+            font-size: 1.1rem;
+            color: #b8b8b8;
+            margin: 0;
+        }
+
+        /* ---------- Engagement / how we work ---------- */
+        .steps {
+            counter-reset: step;
+            margin-top: 3.5rem;
+            border-top: 1px solid var(--hairline);
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 6rem 1fr 2fr;
+            gap: 2rem;
+            padding: 2.25rem 0;
+            border-bottom: 1px solid var(--hairline);
+            align-items: start;
+        }
+
+        .step__num {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .step__title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .step__body {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* ---------- Stats strip ---------- */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .stat__figure {
+            font-size: 3.5rem;
+            font-weight: 500;
+            letter-spacing: -1px;
+            margin: 0;
+        }
+
+        .stat__figure span {
+            color: var(--accent);
+        }
+
+        .stat__label {
+            font-size: 1rem;
+            color: var(--muted);
+            margin: 0.5rem 0 0;
+        }
+
+        /* ---------- Contact ---------- */
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .form-field {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-field label {
+            display: block;
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.6rem;
+        }
+
+        .form-field input,
+        .form-field textarea {
+            width: 100%;
             font-family: inherit;
+            font-size: 1.1rem;
+            color: var(--ink);
+            background: transparent;
+            border: 0;
+            border-bottom: 1px solid var(--ink);
+            padding: 0.5rem 0;
+            outline: none;
+            transition: border-color 0.2s ease;
         }
-        
-        .email-link:hover {
+
+        .form-field input:focus,
+        .form-field textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .form-field textarea {
+            resize: vertical;
+            min-height: 6rem;
+        }
+
+        .btn {
+            font-family: inherit;
+            font-size: 1.1rem;
+            background: var(--ink);
+            color: var(--paper);
+            border: 1px solid var(--ink);
+            padding: 0.9rem 2.5rem;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .contact-aside h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 0 0 0.75rem;
+        }
+
+        .contact-aside p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin: 0 0 2rem;
+        }
+
+        .contact-aside a {
+            color: var(--ink);
             text-decoration: underline;
-            text-decoration-color: #eb5e2a;
+            text-decoration-color: var(--accent);
             text-decoration-thickness: 1px;
-            text-underline-offset: 1px;
+            text-underline-offset: 2px;
         }
-        
+
+        /* ---------- Footer ---------- */
+        footer {
+            border-top: 1px solid var(--hairline);
+            padding: 2.5rem 5%;
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        footer a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+            .contact { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 768px) {
-            .name {
-                font-size: 2.5rem;
-            }
-            .subtitle {
-                font-size: 1.2rem;
-                margin-top:-5px
-            }
+            .name { font-size: 2.5rem; }
+            .subtitle { font-size: 1.2rem; margin-top: -5px; }
+            .section-title { font-size: 2rem; }
+            .lede { font-size: 1.15rem; }
+            .grid,
+            .principles,
+            .stats { grid-template-columns: 1fr; }
+            .step { grid-template-columns: 3rem 1fr; }
+            .step__body { grid-column: 1 / -1; }
+            footer { flex-direction: column; gap: 1rem; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="name">Wilbur dekum</h1>
-        <p class="subtitle">Data Strategy & Operations</p>
-    </div>
-    <a href="mailto:hello@wilburdekum.com" class="email-link">hello@wilburdekum.com</a>
+    <!-- ===== HERO (unchanged brand landing) ===== -->
+    <header class="hero">
+        <div class="container">
+            <h1 class="name">Wilbur dekum</h1>
+            <p class="subtitle">Data Strategy &amp; Operations</p>
+        </div>
+        <span class="scroll-cue">scroll</span>
+    </header>
+
+    <!-- ===== CONTENT SHEET ===== -->
+    <main class="sheet">
+            <!-- Intro -->
+            <section id="intro">
+                <p class="eyebrow">Who we are</p>
+                <h2 class="section-title">We turn data into decisions leaders can act on.</h2>
+                <p class="lede">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Wilbur Dekum
+                    partners with ambitious teams to build the strategy, systems, and
+                    operating rhythm that make data a durable advantage — not a
+                    quarterly fire drill.
+                </p>
+            </section>
+
+            <hr class="rule">
+
+            <!-- Capabilities -->
+            <section id="capabilities">
+                <p class="eyebrow">What we do</p>
+                <h2 class="section-title">Capabilities</h2>
+                <p class="lede">
+                    Sed do eiusmod tempor incididunt ut labore. Engagements span the
+                    full arc — from the boardroom mandate to the pipeline in production.
+                </p>
+
+                <div class="grid">
+                    <article class="card">
+                        <p class="card__index">01</p>
+                        <h3 class="card__title">Data Strategy</h3>
+                        <p class="card__body">
+                            Ut enim ad minim veniam, quis nostrud exercitation. We
+                            translate business ambition into a data roadmap with clear
+                            priorities, ownership, and measurable outcomes.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <p class="card__index">02</p>
+                        <h3 class="card__title">Analytics &amp; Insight</h3>
+                        <p class="card__body">
+                            Duis aute irure dolor in reprehenderit. From executive
+                            dashboards to deep-dive analysis, we surface the signal that
+                            actually changes a decision.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <p class="card__index">03</p>
+                        <h3 class="card__title">Operating Model</h3>
+                        <p class="card__body">
+                            Excepteur sint occaecat cupidatat non proident. We design the
+                            teams, rituals, and governance that keep data work moving
+                            long after we leave.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <p class="card__index">04</p>
+                        <h3 class="card__title">Modern Data Platform</h3>
+                        <p class="card__body">
+                            Lorem ipsum dolor sit amet consectetur. Pragmatic architecture
+                            and tooling choices — built for the problem in front of you,
+                            not the hype cycle.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <p class="card__index">05</p>
+                        <h3 class="card__title">Governance &amp; Trust</h3>
+                        <p class="card__body">
+                            Sunt in culpa qui officia deserunt mollit. Definitions,
+                            quality, and access that people trust — the quiet foundation
+                            every metric depends on.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <p class="card__index">06</p>
+                        <h3 class="card__title">Enablement</h3>
+                        <p class="card__body">
+                            Nemo enim ipsam voluptatem quia voluptas. We coach your people
+                            so capability compounds internally instead of walking out the
+                            door with the consultants.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Philosophy / approach (inverted) -->
+            <div class="approach">
+                <section id="philosophy">
+                    <p class="eyebrow">How we think</p>
+                    <h2 class="section-title">A point of view, not a playbook.</h2>
+                    <p class="lede">
+                        Neque porro quisquam est qui dolorem ipsum quia. Good data work is
+                        less about technology and more about judgment — knowing which
+                        question is worth answering, and having the discipline to stop
+                        once it is.
+                    </p>
+
+                    <div class="principles">
+                        <div class="principle">
+                            <p class="principle__num">I.</p>
+                            <h3 class="principle__title">Start with the decision</h3>
+                            <p class="principle__body">
+                                At vero eos et accusamus et iusto odio. Every dataset
+                                should trace back to a choice someone has to make. If it
+                                doesn't, it's overhead.
+                            </p>
+                        </div>
+                        <div class="principle">
+                            <p class="principle__num">II.</p>
+                            <h3 class="principle__title">Simple, then scalable</h3>
+                            <p class="principle__body">
+                                Et harum quidem rerum facilis est. The best system is the
+                                simplest one that survives contact with reality. We earn
+                                complexity, never assume it.
+                            </p>
+                        </div>
+                        <div class="principle">
+                            <p class="principle__num">III.</p>
+                            <h3 class="principle__title">Build the muscle</h3>
+                            <p class="principle__body">
+                                Temporibus autem quibusdam et aut officiis. Our aim is to
+                                make ourselves unnecessary — leaving behind a team that is
+                                stronger than the one we met.
+                            </p>
+                        </div>
+                        <div class="principle">
+                            <p class="principle__num">IV.</p>
+                            <h3 class="principle__title">Truth over comfort</h3>
+                            <p class="principle__body">
+                                Nam libero tempore, cum soluta nobis. We tell you what the
+                                data says, including when it contradicts the plan. That's
+                                the whole point of asking.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Engagement -->
+            <section id="engagement">
+                <p class="eyebrow">How we work</p>
+                <h2 class="section-title">Engagement model</h2>
+                <p class="lede">
+                    Quis autem vel eum iure reprehenderit. A clear path from first
+                    conversation to lasting capability, with no black boxes along the way.
+                </p>
+
+                <div class="steps">
+                    <div class="step">
+                        <span class="step__num">01</span>
+                        <h3 class="step__title">Discover</h3>
+                        <p class="step__body">
+                            Ut aut reiciendis voluptatibus maiores. We map the landscape —
+                            goals, data, people, and constraints — and agree on what
+                            success actually looks like.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <span class="step__num">02</span>
+                        <h3 class="step__title">Frame</h3>
+                        <p class="step__body">
+                            Itaque earum rerum hic tenetur. We shape a focused plan with
+                            prioritized bets, so the first weeks create momentum rather
+                            than a backlog.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <span class="step__num">03</span>
+                        <h3 class="step__title">Build</h3>
+                        <p class="step__body">
+                            Nam libero tempore cum soluta nobis. We deliver in short
+                            cycles — strategy, analysis, and systems shipped together and
+                            reviewed in the open.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <span class="step__num">04</span>
+                        <h3 class="step__title">Embed</h3>
+                        <p class="step__body">
+                            Temporibus autem quibusdam officiis debitis. We hand over
+                            ownership, document the how, and coach the team so the work
+                            keeps compounding.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="rule rule--full">
+
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stat">
+                    <p class="stat__figure"><span>120</span>+</p>
+                    <p class="stat__label">Engagements delivered</p>
+                </div>
+                <div class="stat">
+                    <p class="stat__figure"><span>15</span> yrs</p>
+                    <p class="stat__label">In data &amp; operations</p>
+                </div>
+                <div class="stat">
+                    <p class="stat__figure"><span>9</span></p>
+                    <p class="stat__label">Industries served</p>
+                </div>
+            </div>
+
+            <hr class="rule rule--full">
+
+            <!-- Contact -->
+            <section id="contact">
+                <p class="eyebrow">Get in touch</p>
+                <h2 class="section-title">Let's talk about your data.</h2>
+
+                <div class="contact">
+                    <form class="contact-form" action="mailto:hello@wilburdekum.com" method="post" enctype="text/plain">
+                        <div class="form-field">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company" placeholder="Company, Inc.">
+                        </div>
+                        <div class="form-field">
+                            <label for="message">How can we help?</label>
+                            <textarea id="message" name="message" placeholder="Tell us a little about the challenge you're facing…"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send message</button>
+                    </form>
+
+                    <aside class="contact-aside">
+                        <h3>Prefer email?</h3>
+                        <p>
+                            Reach us directly at
+                            <a href="mailto:hello@wilburdekum.com">hello@wilburdekum.com</a>
+                            and we'll get back to you within two business days.
+                        </p>
+                        <h3>Where we work</h3>
+                        <p>
+                            Remote-first, worldwide. Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit sed do eiusmod.
+                        </p>
+                    </aside>
+                </div>
+            </section>
+
+            <footer>
+                <span>© 2026 Wilbur Dekum. All rights reserved.</span>
+                <a href="mailto:hello@wilburdekum.com">hello@wilburdekum.com</a>
+            </footer>
+        </main>
 </body>
 </html>
