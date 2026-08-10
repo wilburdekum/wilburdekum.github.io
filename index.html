@@ -178,8 +178,13 @@
         .lede {
             font-size: 1.25rem;
             color: var(--muted);
-            max-width: 64ch;
             margin: 0;
+        }
+
+        /* Intro copy runs the full container width */
+        #intro .section-title,
+        #intro .lede {
+            max-width: none;
         }
 
         .rule {
@@ -451,12 +456,16 @@
             <!-- Intro -->
             <section id="intro">
                 <p class="eyebrow">Who we are</p>
-                <h2 class="section-title">We turn data into decisions leaders can act on.</h2>
+                <h2 class="section-title">
+                    <span>You don't have a data problem.</span> 
+                    <span>You have a coherence problem.</span>
+                </h2>
                 <p class="lede">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Wilbur Dekum
-                    partners with ambitious teams to build the strategy, systems, and
-                    operating rhythm that make data a durable advantage — not a
-                    quarterly fire drill.
+                    A tool here, an analyst there, one heroic spreadsheet holding it all
+                    together — that doesn't add up to a strategy. Wilbur Dekum helps small
+                    and midsize organizations and non-profits replace piecemeal efforts
+                    with a coherent data foundation you can actually build on. Because using
+                    data well is no longer an advantage. It's a requirement.
                 </p>
             </section>
 
@@ -467,63 +476,63 @@
                 <p class="eyebrow">What we do</p>
                 <h2 class="section-title">Capabilities</h2>
                 <p class="lede">
-                    Sed do eiusmod tempor incididunt ut labore. Engagements span the
-                    full arc — from the boardroom mandate to the pipeline in production.
+                    Every engagement starts with an assessment of how data moves through
+                    your organization, and ends with a staged, practical plan across six
+                    dimensions.
                 </p>
 
                 <div class="grid">
                     <article class="card">
                         <p class="card__index">01</p>
-                        <h3 class="card__title">Data Strategy</h3>
+                        <h3 class="card__title">Data Strategy &amp; Assessment</h3>
                         <p class="card__body">
-                            Ut enim ad minim veniam, quis nostrud exercitation. We
-                            translate business ambition into a data roadmap with clear
-                            priorities, ownership, and measurable outcomes.
+                            Stakeholder interviews across your organization, mapped into a
+                            clear picture of how data is generated, stored, secured, and
+                            used. You own the resulting plan either way.
                         </p>
                     </article>
                     <article class="card">
                         <p class="card__index">02</p>
-                        <h3 class="card__title">Analytics &amp; Insight</h3>
+                        <h3 class="card__title">Infrastructure &amp; Platform</h3>
                         <p class="card__body">
-                            Duis aute irure dolor in reprehenderit. From executive
-                            dashboards to deep-dive analysis, we surface the signal that
-                            actually changes a decision.
+                            Pragmatic recommendations for pipelines, warehousing, and
+                            architecture. Built for the problem in front of you, not the
+                            hype cycle.
                         </p>
                     </article>
                     <article class="card">
                         <p class="card__index">03</p>
-                        <h3 class="card__title">Operating Model</h3>
+                        <h3 class="card__title">Analytics &amp; Tooling</h3>
                         <p class="card__body">
-                            Excepteur sint occaecat cupidatat non proident. We design the
-                            teams, rituals, and governance that keep data work moving
-                            long after we leave.
+                            BI tools, integrations, and the modern data stack (dbt and
+                            friends), surfacing the metrics and KPIs that actually change
+                            decisions.
                         </p>
                     </article>
                     <article class="card">
                         <p class="card__index">04</p>
-                        <h3 class="card__title">Modern Data Platform</h3>
+                        <h3 class="card__title">Staffing &amp; Teams</h3>
                         <p class="card__body">
-                            Lorem ipsum dolor sit amet consectetur. Pragmatic architecture
-                            and tooling choices — built for the problem in front of you,
-                            not the hype cycle.
+                            Re-org and hiring recommendations, role definitions, and
+                            support. That includes telling you when the right move is a
+                            full-time hire instead of us.
                         </p>
                     </article>
                     <article class="card">
                         <p class="card__index">05</p>
-                        <h3 class="card__title">Governance &amp; Trust</h3>
+                        <h3 class="card__title">Process &amp; Governance</h3>
                         <p class="card__body">
-                            Sunt in culpa qui officia deserunt mollit. Definitions,
-                            quality, and access that people trust — the quiet foundation
-                            every metric depends on.
+                            Workflows, program management, and data governance: the quiet
+                            foundation every trusted metric depends on.
                         </p>
                     </article>
                     <article class="card">
                         <p class="card__index">06</p>
-                        <h3 class="card__title">Enablement</h3>
+                        <h3 class="card__title">Investigation &amp; Due Diligence</h3>
                         <p class="card__body">
-                            Nemo enim ipsam voluptatem quia voluptas. We coach your people
-                            so capability compounds internally instead of walking out the
-                            door with the consultants.
+                            For data-heavy companies and acquirers. We untangle software,
+                            product, and data to surface insights, fix incoherent
+                            reporting, or support M&amp;A decisions.
                         </p>
                     </article>
                 </div>
@@ -535,47 +544,45 @@
                     <p class="eyebrow">How we think</p>
                     <h2 class="section-title">A point of view, not a playbook.</h2>
                     <p class="lede">
-                        Neque porro quisquam est qui dolorem ipsum quia. Good data work is
-                        less about technology and more about judgment — knowing which
-                        question is worth answering, and having the discipline to stop
-                        once it is.
+                        Good data work is less about technology and more about coherence.
+                        Every piece connected, from how data is created to how a decision
+                        gets made.
                     </p>
 
                     <div class="principles">
                         <div class="principle">
                             <p class="principle__num">I.</p>
-                            <h3 class="principle__title">Start with the decision</h3>
+                            <h3 class="principle__title">Coherence over piecemeal</h3>
                             <p class="principle__body">
-                                At vero eos et accusamus et iusto odio. Every dataset
-                                should trace back to a choice someone has to make. If it
-                                doesn't, it's overhead.
+                                An analyst without infrastructure. A warehouse without
+                                governance. Partial fixes fail, so we treat data as one
+                                connected system, end to end.
                             </p>
                         </div>
                         <div class="principle">
                             <p class="principle__num">II.</p>
-                            <h3 class="principle__title">Simple, then scalable</h3>
+                            <h3 class="principle__title">A requirement, not a luxury</h3>
                             <p class="principle__body">
-                                Et harum quidem rerum facilis est. The best system is the
-                                simplest one that survives contact with reality. We earn
-                                complexity, never assume it.
+                                Every organization is now expected to run on data. We're
+                                the catch-up path for teams who can't pause the business to
+                                build it.
                             </p>
                         </div>
                         <div class="principle">
                             <p class="principle__num">III.</p>
-                            <h3 class="principle__title">Build the muscle</h3>
+                            <h3 class="principle__title">The plan is yours</h3>
                             <p class="principle__body">
-                                Temporibus autem quibusdam et aut officiis. Our aim is to
-                                make ourselves unnecessary — leaving behind a team that is
-                                stronger than the one we met.
+                                Assessment first, always. You get the map whether or not
+                                you hire us to walk it. And we'll say so when the right
+                                answer is hiring someone instead.
                             </p>
                         </div>
                         <div class="principle">
                             <p class="principle__num">IV.</p>
-                            <h3 class="principle__title">Truth over comfort</h3>
+                            <h3 class="principle__title">Every altitude</h3>
                             <p class="principle__body">
-                                Nam libero tempore, cum soluta nobis. We tell you what the
-                                data says, including when it contradicts the plan. That's
-                                the whole point of asking.
+                                Strategic and tactical, weeds to clouds. Comfortable with
+                                your board deck and your dbt repo.
                             </p>
                         </div>
                     </div>
@@ -587,48 +594,64 @@
                 <p class="eyebrow">How we work</p>
                 <h2 class="section-title">Engagement model</h2>
                 <p class="lede">
-                    Quis autem vel eum iure reprehenderit. A clear path from first
-                    conversation to lasting capability, with no black boxes along the way.
+                    A clear path from first conversation to lasting capability, with no
+                    black boxes along the way.
                 </p>
 
                 <div class="steps">
                     <div class="step">
                         <span class="step__num">01</span>
-                        <h3 class="step__title">Discover</h3>
+                        <h3 class="step__title">Assess</h3>
                         <p class="step__body">
-                            Ut aut reiciendis voluptatibus maiores. We map the landscape —
-                            goals, data, people, and constraints — and agree on what
-                            success actually looks like.
+                            Two to six weeks of interviews across every relevant function.
+                            Each conversation shapes the next, until we hold a picture of
+                            your data landscape no single person had.
                         </p>
                     </div>
                     <div class="step">
                         <span class="step__num">02</span>
-                        <h3 class="step__title">Frame</h3>
+                        <h3 class="step__title">Plan</h3>
                         <p class="step__body">
-                            Itaque earum rerum hic tenetur. We shape a focused plan with
-                            prioritized bets, so the first weeks create momentum rather
-                            than a backlog.
+                            A live readout and a detailed, staged operational plan
+                            covering infrastructure, tooling, staffing, metrics, and
+                            process. Practical and specific.
                         </p>
                     </div>
                     <div class="step">
                         <span class="step__num">03</span>
-                        <h3 class="step__title">Build</h3>
+                        <h3 class="step__title">Decide</h3>
                         <p class="step__body">
-                            Nam libero tempore cum soluta nobis. We deliver in short
-                            cycles — strategy, analysis, and systems shipped together and
-                            reviewed in the open.
+                            The plan is yours. Implement it in-house, use it as a hiring
+                            roadmap, or engage us for the subset that fits your budget and
+                            timeline.
                         </p>
                     </div>
                     <div class="step">
                         <span class="step__num">04</span>
-                        <h3 class="step__title">Embed</h3>
+                        <h3 class="step__title">Lead</h3>
                         <p class="step__body">
-                            Temporibus autem quibusdam officiis debitis. We hand over
-                            ownership, document the how, and coach the team so the work
-                            keeps compounding.
+                            Fractional data leadership on a monthly, days-per-week basis.
+                            We work with your team and bring in trusted engineers and data
+                            scientists when the work calls for it.
                         </p>
                     </div>
                 </div>
+            </section>
+
+            <hr class="rule rule--full">
+
+            <!-- About -->
+            <section id="about">
+                <p class="eyebrow">Who's behind this</p>
+                <h2 class="section-title">Senior expertise, flexible team.</h2>
+                <p class="lede">
+                    Wilbur Dekum is the practice of Brett Clark Wejrowski, drawing on two
+                    decades of software engineering, product, and data leadership: building
+                    data teams, infrastructure, and analytics from the ground up. Core
+                    strategy work is handled personally. When engagements call for deeper
+                    build-out, a trusted bench of contract engineers and data scientists
+                    joins the work. Based in Portland, Oregon. 
+                </p>
             </section>
 
             <hr class="rule rule--full">
@@ -637,6 +660,10 @@
             <section id="contact">
                 <p class="eyebrow">Get in touch</p>
                 <h2 class="section-title">Let's talk about your data.</h2>
+                <p class="lede">
+                    Start with a conversation. No pitch, no deck. A working discussion
+                    about where your data actually stands.
+                </p>
 
                 <div class="contact">
                     <form class="contact-form" action="mailto:hello@wilburdekum.com" method="post" enctype="text/plain">
@@ -668,8 +695,8 @@
                         </p>
                         <h3>Where we work</h3>
                         <p>
-                            Remote-first, worldwide. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit sed do eiusmod.
+                            Based in Portland, Oregon. Working with organizations
+                            everywhere.
                         </p>
                     </aside>
                 </div>
