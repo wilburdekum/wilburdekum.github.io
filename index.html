@@ -23,6 +23,7 @@
             --muted: #555555;
             --hairline: #e2e2e2;
             --paper: #ffffff;
+            --paper-alt: #f8f7f4;
         }
 
         * {
@@ -82,30 +83,35 @@
         .masthead__cta {
             display: flex;
             align-items: center;
-            gap: 1.25rem;
+            gap: 1.75rem;
             margin-left: auto;
         }
 
-        .masthead__cta-label {
-            font-size: 1rem;
-            color: var(--muted);
-        }
-
-        .masthead__icon {
+        .masthead__cta-link {
             display: inline-flex;
             align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
             color: var(--muted);
-            transition: color 0.2s ease;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.075s ease;
         }
 
-        .masthead__icon:hover {
+        .masthead__cta-link:hover {
             color: var(--accent);
         }
 
-        .masthead__icon svg {
-            width: 21px;
-            height: 21px;
+        .masthead__cta-link svg {
+            width: 15px;
+            height: 15px;
             display: block;
+        }
+
+        /* The envelope reads top-heavy; nudge it to optically center */
+        .masthead__cta-link--mail svg {
+            position: relative;
+            top: 1px;
         }
 
         .masthead__brand {
@@ -122,7 +128,7 @@
         /* ---------- Hero (matches the original landing page, now in flow) ---------- */
         .hero {
             position: relative;
-            min-height: 68vh;
+            min-height: 40vh;
             max-width: 1080px;
             margin: 0 auto;
             display: flex;
@@ -215,6 +221,13 @@
         #intro .section-title,
         #intro .lede {
             max-width: none;
+        }
+
+        /* Full-width tinted band (color spans edge to edge, content stays 1080) */
+        .band {
+            background: var(--paper-alt);
+            border-top: 1px solid var(--hairline);
+            border-bottom: 1px solid var(--hairline);
         }
 
         .rule {
@@ -353,7 +366,6 @@
 
         /* ---------- Footer ---------- */
         footer {
-            border-top: 1px solid var(--hairline);
             padding: 2.5rem 5%;
             max-width: 1080px;
             margin: 0 auto;
@@ -398,7 +410,7 @@
 
         @media (max-width: 768px) {
             .masthead { padding: 0.85rem 5%; }
-            .masthead__cta-label { display: none; }
+            .masthead__cta-link span { display: none; }
             .masthead__brand { font-size: 1.3rem; }
             .name { font-size: 2.5rem; }
             .subtitle { font-size: 1.2rem; margin-top: -5px; }
@@ -417,18 +429,19 @@
     <div class="masthead" id="masthead">
         <a href="#top" class="masthead__brand">Wilbur dekum</a>
         <div class="masthead__cta">
-            <span class="masthead__cta-label">Get in touch:</span>
-            <a href="mailto:hello@wilburdekum.com" class="masthead__icon" aria-label="Say Hello">
+            <a href="mailto:hello@wilburdekum.com" class="masthead__cta-link masthead__cta-link--mail">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                     <rect x="2" y="4" width="20" height="16" rx="2"/>
                     <path d="m2 7 10 6 10-6"/>
                 </svg>
+                <span>Say Hello</span>
             </a>
-            <a href="https://calendly.com/brett-wejrowski/introduction" target="_blank" rel="noopener" class="masthead__icon" aria-label="Schedule an Intro">
+            <a href="https://calendly.com/brett-wejrowski/introduction" target="_blank" rel="noopener" class="masthead__cta-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                     <rect x="3" y="4" width="18" height="18" rx="2"/>
                     <path d="M8 2v4M16 2v4M3 10h18"/>
                 </svg>
+                <span>Schedule an Intro</span>
             </a>
         </div>
     </div>
@@ -444,22 +457,22 @@
     <!-- ===== CONTENT SHEET ===== -->
     <main class="sheet">
             <!-- Intro -->
-            <section id="intro">
-                <p class="eyebrow">Who we are</p>
-                <h2 class="section-title">
-                    <span>You don't have a data problem.</span> 
-                    <span>You have a coherence problem.</span>
-                </h2>
-                <p class="lede">
-                    A tool here, an analyst there, one heroic spreadsheet holding it all
-                    together — that doesn't add up to a strategy. Wilbur Dekum helps small
-                    and midsize organizations and non-profits replace piecemeal efforts
-                    with a coherent data foundation you can actually build on. Because using
-                    data well is no longer an advantage. It's a requirement.
-                </p>
-            </section>
-
-            <hr class="rule rule--full">
+            <div class="band">
+                <section id="intro">
+                    <p class="eyebrow">Who we are</p>
+                    <h2 class="section-title">
+                        <span>You don't have a data problem.</span>
+                        <span>You have a coherence problem.</span>
+                    </h2>
+                    <p class="lede">
+                        A tool here, an analyst there, one heroic spreadsheet holding it all
+                        together — that doesn't add up to a strategy. Wilbur Dekum helps small
+                        and midsize organizations and non-profits replace piecemeal efforts
+                        with a coherent data foundation you can actually build on. Because using
+                        data effectively is no longer an advantage. It's a requirement.
+                    </p>
+                </section>
+            </div>
 
             <!-- Capabilities -->
             <section id="capabilities">
@@ -624,23 +637,21 @@
                 </div>
             </section>
 
-            <hr class="rule rule--full">
-
             <!-- About -->
-            <section id="about">
-                <p class="eyebrow">Who's behind this</p>
-                <h2 class="section-title">Senior expertise, flexible team.</h2>
-                <p class="lede">
-                    Wilbur Dekum is the practice of <a href="https://www.linkedin.com/in/brett-wejrowski" class="inline-link" target="_blank" rel="noopener">Brett Clark Wejrowski</a>, drawing on two
-                    decades of engineering, product, and data leadership, building
-                    teams, products, and companies from the ground up. Core
-                    strategy is handled personally; when engagements call for deeper
-                    build-out, a trusted bench of contract engineers and data scientists
-                    joins the work.
-                </p>
-            </section>
-
-            <hr class="rule rule--full">
+            <div class="band">
+                <section id="about">
+                    <p class="eyebrow">Who's behind this</p>
+                    <h2 class="section-title">Senior expertise, flexible team.</h2>
+                    <p class="lede">
+                        Wilbur Dekum is the practice of <a href="https://www.linkedin.com/in/brett-wejrowski" class="inline-link" target="_blank" rel="noopener">Brett Clark Wejrowski</a>, drawing on two
+                        decades of engineering, product, and data leadership, building
+                        teams, products, and companies from the ground up. Core
+                        strategy is handled personally; when engagements call for deeper
+                        build-out, a trusted bench of contract engineers and data scientists
+                        joins the work.
+                    </p>
+                </section>
+            </div>
 
             <!-- Contact -->
             <section id="contact">
@@ -661,6 +672,8 @@
                 
                 <p class="contact-note">Based in Portland, Oregon. Working with organizations everywhere.</p>
             </section>
+
+            <hr class="rule rule--full">
 
             <footer>
                 <span>© 2026 Wilbur Dekum. All rights reserved.</span>
