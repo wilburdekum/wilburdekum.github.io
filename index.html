@@ -182,6 +182,38 @@
             max-width: 1080px;
             margin: 0 auto;
             padding: 4.5rem 5% 4rem;
+            position: relative;
+        }
+
+        /* Sketch icon marking the top-right corner of each section */
+        .section-icon {
+            position: absolute;
+            top: 4.25rem;
+            right: 5%;
+            width: 2rem;
+            height: 2rem;
+            color: var(--muted);
+            background-color: currentColor;
+            opacity: 0.4;
+            pointer-events: none;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+        }
+
+        .section-icon--scatter { -webkit-mask-image: url("icons/scatter-plot.svg"); mask-image: url("icons/scatter-plot.svg"); }
+        .section-icon--flow { -webkit-mask-image: url("icons/flow-dag.svg"); mask-image: url("icons/flow-dag.svg"); }
+        .section-icon--compass { -webkit-mask-image: url("icons/compass.svg"); mask-image: url("icons/compass.svg"); transform: rotate(-35deg); }
+        .section-icon--report { -webkit-mask-image: url("icons/report.svg"); mask-image: url("icons/report.svg"); }
+        .section-icon--team { -webkit-mask-image: url("icons/team.svg"); mask-image: url("icons/team.svg"); }
+        .section-icon--lens { -webkit-mask-image: url("icons/insight-lens.svg"); mask-image: url("icons/insight-lens.svg"); }
+
+        .approach .section-icon {
+            color: var(--paper);
+            opacity: 0.32;
         }
 
         .eyebrow {
@@ -433,6 +465,7 @@
             .principles { grid-template-columns: 1fr; }
             .step { grid-template-columns: 3rem 1fr; }
             .step__body { grid-column: 1 / -1; }
+            .section-icon { display: none; }
             footer { flex-direction: column; gap: 1rem; text-align: center; }
         }
     </style>
@@ -472,6 +505,7 @@
             <!-- Intro -->
             <div class="band">
                 <section id="intro">
+                    <span class="section-icon section-icon--scatter" aria-hidden="true"></span>
                     <p class="eyebrow">Who we are</p>
                     <h2 class="section-title">
                         You don't have a <span>data problem.</span><br>
@@ -489,11 +523,12 @@
 
             <!-- Capabilities -->
             <section id="capabilities">
+                <span class="section-icon section-icon--flow" aria-hidden="true"></span>
                 <p class="eyebrow">What we do</p>
                 <h2 class="section-title">Capabilities</h2>
                 <p class="lede">
                     Every engagement starts with an assessment of how data moves through
-                    your organization, and ends with a staged, practical plan.
+                    your organization. 
                 </p>
 
                 <div class="grid">
@@ -556,6 +591,7 @@
             <!-- Philosophy / approach (inverted) -->
             <div class="approach">
                 <section id="philosophy">
+                    <span class="section-icon section-icon--compass" aria-hidden="true"></span>
                     <p class="eyebrow">How we think</p>
                     <h2 class="section-title">A point of view, not a playbook.</h2>
                     <p class="lede">
@@ -602,6 +638,7 @@
 
             <!-- Engagement -->
             <section id="engagement">
+                <span class="section-icon section-icon--report" aria-hidden="true"></span>
                 <p class="eyebrow">How we work</p>
                 <h2 class="section-title">Engagement model</h2>
                 <p class="lede">
@@ -651,6 +688,7 @@
             <!-- About -->
             <div class="band">
                 <section id="about">
+                    <span class="section-icon section-icon--team" aria-hidden="true"></span>
                     <p class="eyebrow">Who's behind this</p>
                     <h2 class="section-title">Senior expertise, flexible team.</h2>
                     <p class="lede">
@@ -666,6 +704,7 @@
 
             <!-- Contact -->
             <section id="contact">
+                <span class="section-icon section-icon--lens" aria-hidden="true"></span>
                 <p class="eyebrow">Get in touch</p>
                 <h2 class="section-title">Let's talk about your data.</h2>
                 <p class="lede">
