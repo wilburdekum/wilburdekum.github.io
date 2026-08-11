@@ -161,6 +161,7 @@
             margin-left: 0;
             color: var(--ink);
             padding-top: 0;
+            padding-left: 1em;
         }
 
         /* ---------- Content sheet that scrolls over the hero ---------- */
@@ -195,6 +196,10 @@
 
         /* Keep each sentence in a title intact (whole line or its own line) */
         .section-title span {
+            white-space: nowrap;
+        }
+
+        .nowrap {
             white-space: nowrap;
         }
 
@@ -427,7 +432,7 @@
 <body>
     <!-- ===== PERMANENT MASTHEAD (slides in after the hero scrolls off) ===== -->
     <div class="masthead" id="masthead">
-        <a href="#top" class="masthead__brand">Wilbur dekum</a>
+        <a href="#top" class="masthead__brand"><span class="nowrap">Wilbur dekum</span></a>
         <div class="masthead__cta">
             <a href="mailto:hello@wilburdekum.com" class="masthead__cta-link masthead__cta-link--mail">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -449,7 +454,7 @@
     <!-- ===== HERO (unchanged brand landing) ===== -->
     <header class="hero" id="top">
         <div class="container">
-            <h1 class="name">Wilbur dekum</h1>
+            <h1 class="name"><span class="nowrap">Wilbur dekum</span></h1>
             <p class="subtitle">Data Strategy &amp; Operations</p>
         </div>
     </header>
@@ -461,14 +466,14 @@
                 <section id="intro">
                     <p class="eyebrow">Who we are</p>
                     <h2 class="section-title">
-                        <span>You don't have a data problem.</span>
-                        <span>You have a coherence problem.</span>
+                        You don't have a <span>data problem.</span><br>
+                        You have a <span>coherence problem.</span>
                     </h2>
                     <p class="lede">
                         A tool here, an analyst there, one heroic spreadsheet holding it all
-                        together — that doesn't add up to a strategy. Wilbur Dekum helps small
-                        and midsize organizations and non-profits replace piecemeal efforts
-                        with a coherent data foundation you can actually build on. Because using
+                        together — that doesn't add up to a strategy. <span class="nowrap">Wilbur Dekum</span> helps small
+                        to midsize companies and non-profits replace piecemeal efforts
+                        with a coherent data foundation you can actually build on. Using
                         data effectively is no longer an advantage. It's a requirement.
                     </p>
                 </section>
@@ -480,8 +485,7 @@
                 <h2 class="section-title">Capabilities</h2>
                 <p class="lede">
                     Every engagement starts with an assessment of how data moves through
-                    your organization, and ends with a staged, practical plan across six
-                    dimensions.
+                    your organization, and ends with a staged, practical plan.
                 </p>
 
                 <div class="grid">
@@ -491,7 +495,7 @@
                         <p class="card__body">
                             Stakeholder interviews across your organization, mapped into a
                             clear picture of how data is generated, stored, secured, and
-                            used. You own the resulting plan either way.
+                            used. You own the resulting plan.
                         </p>
                     </article>
                     <article class="card">
@@ -507,8 +511,8 @@
                         <p class="card__index">03</p>
                         <h3 class="card__title">Analytics &amp; Tooling</h3>
                         <p class="card__body">
-                            BI tools, integrations, and the modern data stack (dbt and
-                            friends), surfacing the metrics and KPIs that actually change
+                            BI tools, integrations, and the modern data stack, 
+                            surfacing the metrics and KPIs that actually inform
                             decisions.
                         </p>
                     </article>
@@ -566,14 +570,14 @@
                             <p class="principle__body">
                                 Every organization is now expected to run on data. We're
                                 the catch-up path for teams who can't pause the business to
-                                build it.
+                                build the foundation needed.
                             </p>
                         </div>
                         <div class="principle">
                             <h3 class="principle__title"><span class="principle__num">III.</span>The plan is yours</h3>
                             <p class="principle__body">
                                 Assessment first, always. You get the map whether or not
-                                you hire us to walk it. And we'll say so when the right
+                                you want us to walk it. And we'll say so when the right
                                 answer is hiring someone instead.
                             </p>
                         </div>
@@ -581,7 +585,7 @@
                             <h3 class="principle__title"><span class="principle__num">IV.</span>Every altitude</h3>
                             <p class="principle__body">
                                 Strategic and tactical, weeds to clouds. Comfortable with
-                                your board deck and your dbt repo.
+                                your board decks and your git repos.
                             </p>
                         </div>
                     </div>
@@ -593,8 +597,7 @@
                 <p class="eyebrow">How we work</p>
                 <h2 class="section-title">Engagement model</h2>
                 <p class="lede">
-                    A clear path from first conversation to lasting capability, with no
-                    black boxes along the way.
+                    A clear path from first conversation to lasting capabilities. 
                 </p>
 
                 <div class="steps">
@@ -604,14 +607,14 @@
                         <p class="step__body">
                             Two to six weeks of interviews across every relevant function.
                             Each conversation shapes the next, until we hold a picture of
-                            your data landscape no single person had.
+                            your entire data landscape.
                         </p>
                     </div>
                     <div class="step">
                         <span class="step__num">02</span>
                         <h3 class="step__title">Plan</h3>
                         <p class="step__body">
-                            A live readout and a detailed, staged operational plan
+                            A detailed, staged operational plan
                             covering infrastructure, tooling, staffing, metrics, and
                             process. Practical and specific.
                         </p>
@@ -621,7 +624,7 @@
                         <h3 class="step__title">Build</h3>
                         <p class="step__body">
                             The plan is yours. Implement it in-house, use it as a hiring
-                            roadmap, or engage us for the subset that fits your budget and
+                            roadmap, or engage us for the work that fits your budget and
                             timeline.
                         </p>
                     </div>
@@ -643,12 +646,12 @@
                     <p class="eyebrow">Who's behind this</p>
                     <h2 class="section-title">Senior expertise, flexible team.</h2>
                     <p class="lede">
-                        Wilbur Dekum is the practice of <a href="https://www.linkedin.com/in/brett-wejrowski" class="inline-link" target="_blank" rel="noopener">Brett Clark Wejrowski</a>, drawing on two
-                        decades of engineering, product, and data leadership, building
+                        <span class="nowrap">Wilbur Dekum</span> is the practice of <a href="https://www.linkedin.com/in/brett-wejrowski" class="inline-link" target="_blank" rel="noopener">Brett Clark Wejrowski</a>, drawing on two
+                        decades of engineering, product, and data leadership building
                         teams, products, and companies from the ground up. Core
                         strategy is handled personally; when engagements call for deeper
                         build-out, a trusted bench of contract engineers and data scientists
-                        joins the work.
+                        joins the effort.
                     </p>
                 </section>
             </div>
@@ -676,7 +679,7 @@
             <hr class="rule rule--full">
 
             <footer>
-                <span>© 2026 Wilbur Dekum. All rights reserved.</span>
+                <span>© 2026 <span class="nowrap">Wilbur Dekum</span>. All rights reserved.</span>
                 <div class="footer-links">
                     <a href="mailto:hello@wilburdekum.com">hello@wilburdekum.com</a>
                     <a href="https://www.linkedin.com/company/wilbur-dekum/" target="_blank" rel="noopener" class="footer-social" aria-label="Wilbur Dekum on LinkedIn">
